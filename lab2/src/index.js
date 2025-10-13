@@ -6,6 +6,9 @@ import multer from "multer";
 import { PORT } from "./utils/env/envVariables.js";
 import morgan from "morgan";
 
+// ===================  Routes import ===================
+import studentsRouter from "./routes/students.routes.js";
+
 const app = express();
 
 // Get __dirname equivalent in ES modules
@@ -23,7 +26,7 @@ app.use(morgan('dev')); // Log HTTP requests
 
 
 // ==================== ROUTES ====================
-
+app.use("/students", studentsRouter);
 
 
 // ==================== START SERVER ====================
