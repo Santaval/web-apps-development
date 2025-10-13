@@ -7,12 +7,7 @@ export const studentSchema = z
       .number({
         message: "Carnet must be a number",
       })
-      .int({
-        message: "Carnet must be an integer",
-      })
-      .positive({
-        message: "Carnet must be a positive number",
-      }), // carnet is required
+      .min(1, "Carnet must be a positive number"),
     name: z
       .string({
         message: "Name must be a string",
