@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista Estudiantes</title>
+    <meta charset="UTF-8"/>
+    <script src="/js/students/render.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.css"/>
+    <link rel="stylesheet" href="/css/students/styles.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <h1>Lista de Estudiantes</h1>
+    
+    <table class="estudiantes">
+        <thead>
+            <tr>
+                <th>Carnet</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- aquí renderizaremos las filas dinámicamente -->
+        </tbody>
+    </table>
+
+    <br>
+    <input type="button" value="Cargar Estudiantes" onclick="cargarEstudiantes();"/>
+    
+    <br><br>
+    <a href="/html/students/edit.html">Agregar/Editar Estudiante</a>
+</body>
+</html>

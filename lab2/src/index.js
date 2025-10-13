@@ -15,7 +15,7 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const STATIC_DIR = path.join(__dirname, "views");
+const STATIC_DIR = path.join(__dirname, "public");
 
 // ==================== MIDDLEWARES ====================
 app.use(multer().any()); // Handle multipart/form-data

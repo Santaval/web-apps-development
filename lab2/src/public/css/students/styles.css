@@ -1,0 +1,133 @@
+/* General styles */
+body {
+    font-family: 'Arial', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+}
+
+/* Form styles */
+.estudiantes.form {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.estudiantes input[type="text"],
+.estudiantes input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.estudiantes input[type="text"]:focus,
+.estudiantes input[type="number"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Submit buttons container */
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.estudiantes input[type="submit"] {
+    flex: 1;
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.estudiantes input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.estudiantes input[type="submit"]:last-child {
+    background-color: #28a745;
+}
+
+.estudiantes input[type="submit"]:last-child:hover {
+    background-color: #218838;
+}
+
+/* Table styles */
+.estudiantes {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.estudiantes thead {
+    background-color: #007bff;
+    color: white;
+}
+
+.estudiantes th,
+.estudiantes td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.estudiantes tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Button styles */
+input[type="button"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+input[type="button"]:hover {
+    background-color: #0056b3;
+}
+
+/* Link styles */
+a {
+    display: inline-block;
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 10px;
+    padding: 8px 16px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+a:hover {
+    background-color: #007bff;
+    color: white;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE htm    <form class="estudiantes form" onsubmit="enviarFormulario(event);">
+
+<head>
+    <title>MiProyecto - Editar Estudiante</title>
+    <meta charset="UTF-8" />
+    <script src="/js/students/create.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.css"/>
+    <link rel="stylesheet" href="/css/students/styles.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <h1>Gestión de Estudiantes</h1>
+
+    <form class="students" onsubmit="sendForm(event);">
+        Carnet:<br><input type="number" name="carnet"><br>
+        Nombre:<br><input type="text" name="name"><br><br>
+        
+        <input type="submit" value="insert">
+        <input type="submit" value="update">
+    </form>
+    
+    <br>
+    <a href="/html/students/list.html">Ver Lista de Estudiantes</a>
+</body>
+</html>

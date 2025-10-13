@@ -4,7 +4,7 @@ import { z } from "zod";
 export const studentSchema = z
   .object({
     carnet: z
-      .number({
+      .string({
         message: "Carnet must be a number",
       })
       .min(1, "Carnet must be a positive number"),

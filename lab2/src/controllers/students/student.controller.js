@@ -47,8 +47,12 @@ export default class StudentController {
    */
   static async create(req, res) {
     try {
+      req.body.carnet = parseInt( req.body.carnet);
       const newStudent = await StudentModel.create(req.body);
-      res.status(201).json(newStudent);
+      res.status(201).json({
+        message: "Student created successfully",
+        student: newStudent,
+      });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
@@ -62,8 +66,12 @@ export default class StudentController {
    */
   static async update(req, res) {
     try {
+      req.body.carnet = parseInt( req.body.carnet)
       const updatedStudent = await StudentModel.update(req.params.id, req.body);
-      res.status(200).json(updatedStudent);
+      res.status(200).json({
+        message: "Student updated successfully",
+        student: updatedStudent,
+      });
     } catch (error) {
       if (error.message === "Student not found") {
         res.status(404).json({ error: error.message });
