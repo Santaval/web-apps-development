@@ -1,0 +1,88 @@
+<div class="page-header">
+    <h1 class="page-title">
+        <i class="fas fa-home"></i> Bienvenido a SPA Lab 3
+    </h1>
+    <p class="page-subtitle">
+        Demostración de Single Page Application con Client-Side Templating usando HTML5, CSS3 y JavaScript puro
+    </p>
+</div>
+
+<div class="grid grid-2 mb-4">
+    <div class="card slide-in-left">
+        <i class="fas fa-code card-icon"></i>
+        <h3 class="card-title">Tecnologías Modernas</h3>
+        <p class="card-text">
+            Esta aplicación utiliza las últimas tecnologías web incluyendo HTML5 semántico, 
+            CSS3 con diseño responsivo, y JavaScript ES6+ para crear una experiencia fluida.
+        </p>
+        <a href="#about" class="btn mt-2" data-page="about">Conoce Más</a>
+    </div>
+    
+    <div class="card slide-in-right">
+        <i class="fas fa-mobile-alt card-icon"></i>
+        <h3 class="card-title">Diseño Responsivo</h3>
+        <p class="card-text">
+            Interfaz completamente adaptable que funciona perfectamente en dispositivos móviles, 
+            tablets y computadoras de escritorio.
+        </p>
+        <a href="#services" class="btn mt-2" data-page="services">Ver Servicios</a>
+    </div>
+</div>
+
+<div class="card text-center mb-4">
+    <h3 class="mb-3">Características Principales</h3>
+    <div class="grid grid-4">
+        <div class="feature">
+            <i class="fas fa-rocket card-icon"></i>
+            <h4>Rendimiento</h4>
+            <p>Carga rápida y navegación suave sin recargas de página</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-shield-alt card-icon"></i>
+            <h4>Seguridad</h4>
+            <p>Implementación segura con validación y sanitización</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-paint-brush card-icon"></i>
+            <h4>Diseño</h4>
+            <p>Interfaz moderna y atractiva con animaciones suaves</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-cogs card-icon"></i>
+            <h4>Funcionalidad</h4>
+            <p>Sistema de templates robusto con data binding</p>
+        </div>
+    </div>
+</div>
+
+{{#if user}}
+<div class="card">
+    <h3>¡Hola, {{user.name}}!</h3>
+    <p>Última visita: {{formatDate user.lastVisit 'datetime'}}</p>
+</div>
+{{else}}
+<div class="card">
+    <h3>Datos Dinámicos</h3>
+    <p>Fecha actual: {{formatDate currentDate 'long'}}</p>
+    <p>Hora: {{formatDate currentDate 'time'}}</p>
+</div>
+{{/if}}
+
+{{#if featuredProducts}}
+<div class="card mt-4">
+    <h3 class="mb-3">Productos Destacados</h3>
+    <div class="grid grid-3">
+        {{#each featuredProducts}}
+        <div class="product-card">
+            <div class="product-image">
+                <i class="{{this.icon}} card-icon"></i>
+            </div>
+            <h4>{{this.name}}</h4>
+            <p>{{truncate this.description 100}}</p>
+            <div class="product-price">{{currency this.price}}</div>
+            <button class="btn btn-secondary">Ver Detalles</button>
+        </div>
+        {{/each}}
+    </div>
+</div>
+{{/if}}

@@ -1,0 +1,420 @@
+/* Modern CSS Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #f0f7ff;
+    color: #1a365d;
+    line-height: 1.6;
+}
+
+.principal {
+    height: 100%;
+    letter-spacing: 0.3px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e5f0ff 100%);
+}
+
+
+.encabezado {
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    color: white;
+    height: 70px;
+    width: 100%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.encabezado div:first-child {
+    height: 45px;
+    width: 45px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    vertical-align: middle;
+    margin-right: 15px;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    animation: rotation 120s infinite linear;
+    transition: all 0.3s ease;
+}
+
+.encabezado div:first-child:hover {
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.encabezado div:first-child > img{
+	height: 100%;
+	width: 100%;
+}
+
+.d-inline{
+	display: inline-block;
+}
+
+h1, h2, h3, h4, h5 {
+	margin: 0;
+}
+
+.encabezado h1 {
+	text-shadow: 0 0 3px #ffffff, 0 0 5px #000000;
+	text-shadow: 0 0 3px #ffffff;
+	text-shadow: 2px 2px 4px #ffffff;
+	margin-top: 5px;
+}
+
+.lateral {
+    background: white;
+    height: 90%;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+    z-index: 1;
+    max-width: 280px;
+    vertical-align: top;
+    overflow: hidden;
+    border-right: 1px solid #e2e8f0;
+}
+
+.lateral .menu {
+    margin: 20px 10px;
+    list-style: none;
+    padding-left: 0;
+}
+
+.lateral .submenu {
+    list-style: none;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+.lateral ul:first-child > li {
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 0.5rem;
+}
+
+.lateral ul:first-child > li > a {
+    padding: 0.75rem 1rem;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    color: #1e40af;
+    font-weight: 500;
+}
+
+.lateral .menu li, .lateral .submenu li {
+    padding: 0.25rem 0.5rem;
+    margin: 0.5rem 0;
+}
+
+.lateral .menu li a, .lateral .submenu li a, 
+.lateral .menu li a:visited, .lateral .submenu li a:visited {
+    text-decoration: none;
+    color: #475569;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.lateral .navegar:hover {
+    background: #e0f2fe;
+    color: #2563eb;
+    transform: translateX(4px);
+}
+
+.contenido {
+    width: 70%;
+    padding: 2rem;
+    background: white;
+    height: 83%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 12px;
+    margin: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.contenido p{
+	line-height: 30px;
+}
+
+.contenido input[type=button], .contenido input[type=submit], .contenido button {
+    margin: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.contenido input[type=button]:hover, .contenido input[type=submit]:hover, .contenido button:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contenido input[type=button]:active, .contenido input[type=submit]:active, .contenido button:active {
+    transform: translateY(0);
+}
+
+
+.contenido h1, .contenido h2,.contenido h3,.contenido h4, .contenido  h5{
+	margin-bottom: 10px;
+}
+
+
+.contenido .derecha{
+	text-align: right;
+}
+
+.contenido .centrado{
+	text-align: center;
+	padding-right: 5px;
+}
+
+.editarform {
+    border: 1px solid #e2e8f0;
+    padding: 2rem;
+    text-align: left;
+    display: inline-block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    width: 95%;
+    border-radius: 12px;
+    background: white;
+}
+
+.editarform .d-inline {
+    width: 45%;
+    vertical-align: top;
+    margin-bottom: 1rem;
+}
+
+.editarform input, .editarform textarea, .editarform select {
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    width: 100%;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+    background: #f8fafc;
+}
+
+.editarform input:focus, .editarform textarea:focus, .editarform select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background: white;
+}
+
+.autocompletar{
+    list-style: none;
+    position: absolute;
+    background: #ffffff;
+    margin-top: -1%;
+    border: 2px solid rgba(0, 162, 232, .5);
+    border-radius: 5px;
+    padding-left: 0;
+}
+
+.autocompletar li{
+    margin: 2%;
+	cursor: pointer;
+}
+
+.autocompletar li:hover{
+    background: rgb(255, 201, 14);
+}
+
+.scrollhide{  
+	background: linear-gradient(#ffffff, #f0f0f0);
+	height: 90%;
+	width: 15px;
+	position: relative;
+	top: -1%;
+	left: -1.4%;
+	z-index: 5;
+}
+
+#venta_ul{
+	list-style: none;
+    padding-left: 0;
+	background: #ffffff;
+    padding: 10px;
+    border: 1px dotted;
+}
+
+#venta_ul li{
+	height: 50px;
+	border-bottom: 1px dotted rgba(195, 195, 195, .7);
+}
+
+#venta_ul i{
+    border: 1px solid red;
+    margin: 10px;
+    padding: 3px 5px;
+    border-radius: 50%;
+    background: rgb(255, 201, 14);
+    cursor: pointer;
+}
+
+.contenido table{
+	margin: auto;
+	border-collapse: collapse; /* quita el espacio entre bordes de las celdas */
+	background: #ffffff;
+}
+
+.contenido th, .contenido td{
+	border: 1px solid #000000;
+	padding: 10px 30px; /* top/bottom left/right */
+}
+
+.contenido thead{
+	background: rgb(153, 217, 234);
+	color: #000000;
+	text-transform: capitalize;
+}
+
+.contenido tfoot{
+	text-align: right;
+}
+
+.contenido tbody tr:nth-child(even) {
+	background-color: rgba(0, 0, 0,.1); /* zebra striped */
+}
+
+.contenido .highlight tbody tr:hover {
+  background: rgba(0, 0, 0,.5);
+  color: rgba(255, 255, 255, 1);
+}
+
+.tablewrapper{
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+    overflow: hidden;
+    width: fit-content;
+    border: 1px solid black;
+}
+
+.tablewrapper thead th{
+    border-top: none;    
+}
+
+.tablewrapper th:first-child, .tablewrapper td:first-child {
+    border-left: none;    
+}
+
+.tablewrapper th:last-child, .tablewrapper td:last-child {
+    border-right: none;    
+}
+
+.tablewrapper tfoot th{
+    border-bottom: none;    
+}
+
+.contenido .reporte{
+	overflow-x: scroll;
+}
+
+
+@media print {
+	#venta_ul i{
+		display: none;
+	}
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+/* Para responsiveness desde CSS se puede usar media queries
+https://www.w3schools.com/css/css_rwd_mediaqueries.asp
+ */
+@media only screen and (max-width: 768px){
+	.seccion .centrado{
+		overflow-x: scroll;
+	}
+	
+	.editarform{
+		width: 70%;
+	}
+}
+
+
+@media only screen and (max-width: 500px){
+	.editarform{
+		width: 90%;
+	}
+}
+
+/*orientation:landscape|portrait
+Ex: @media (min-width: 600px) and (orientation:landscape) */
+@media (orientation:portrait) {
+	.lateral {
+		width: 100%;
+		max-width: 100%;
+		overflow-x: scroll;
+		height: auto;
+	}
+	.lateral .menu {
+		width: 250%;
+		margin: 0;
+		padding-top: 10px;
+	}
+	.lateral .menu  li{
+		display: inline-block;
+		vertical-align: top;
+		padding: 0;
+	}
+	.lateral .menu li, .lateral .submenu li {
+		margin: 5px 10px;
+	}
+	.contenido{
+		width: 90%;
+		margin-bottom: 5%;
+	}
+	
+	.contenido > div:first-child{
+		padding-bottom: 20%;
+	}
+	
+	.scrollhide{
+		top: 6px;
+		left: -4.5%;
+	}
+	.editarform  div:first-child, .editarform .venta{
+		width: 100%;
+	}
+}
+

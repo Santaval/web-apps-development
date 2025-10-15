@@ -1,0 +1,447 @@
+<div class="page-header">
+    <h1 class="page-title">
+        <i class="fas fa-envelope"></i> Contáctanos
+    </h1>
+    <p class="page-subtitle">
+        Estamos aquí para ayudarte. Ponte en contacto con nosotros
+    </p>
+</div>
+
+<div class="grid grid-2 mb-4">
+    <div class="card">
+        <h3 class="mb-3"><i class="fas fa-paper-plane"></i> Envíanos un Mensaje</h3>
+        <form id="contactForm" class="contact-form">
+            <div class="form-group">
+                <label for="fullName" class="form-label">Nombre Completo *</label>
+                <input type="text" id="fullName" name="fullName" class="form-input" required>
+                <div class="error-message" id="fullNameError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email" class="form-label">Correo Electrónico *</label>
+                <input type="email" id="email" name="email" class="form-input" required>
+                <div class="error-message" id="emailError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone" class="form-label">Teléfono</label>
+                <input type="tel" id="phone" name="phone" class="form-input">
+                <div class="error-message" id="phoneError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="company" class="form-label">Empresa/Organización</label>
+                <input type="text" id="company" name="company" class="form-input">
+            </div>
+            
+            <div class="form-group">
+                <label for="subject" class="form-label">Asunto *</label>
+                <select id="subject" name="subject" class="form-select" required>
+                    <option value="">Selecciona un asunto</option>
+                    <option value="general">Consulta General</option>
+                    <option value="services">Información sobre Servicios</option>
+                    <option value="products">Consulta sobre Productos</option>
+                    <option value="support">Soporte Técnico</option>
+                    <option value="partnership">Propuesta de Colaboración</option>
+                    <option value="other">Otro</option>
+                </select>
+                <div class="error-message" id="subjectError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="message" class="form-label">Mensaje *</label>
+                <textarea id="message" name="message" class="form-textarea" rows="5" required placeholder="Describe tu consulta o mensaje..."></textarea>
+                <div class="error-message" id="messageError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <span class="checkmark"></span>
+                    Deseo recibir newsletter y actualizaciones
+                </label>
+            </div>
+            
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="privacy" name="privacy" required>
+                    <span class="checkmark"></span>
+                    Acepto la <a href="#" class="privacy-link">política de privacidad</a> *
+                </label>
+                <div class="error-message" id="privacyError"></div>
+            </div>
+            
+            <button type="submit" class="btn btn-submit" id="submitBtn">
+                <i class="fas fa-paper-plane"></i> Enviar Mensaje
+            </button>
+        </form>
+        
+        <div id="formSuccess" class="success-message hidden">
+            <i class="fas fa-check-circle"></i>
+            <h4>¡Mensaje enviado exitosamente!</h4>
+            <p>Gracias por contactarnos. Te responderemos pronto.</p>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h3 class="mb-3"><i class="fas fa-info-circle"></i> Información de Contacto</h3>
+        
+        <div class="contact-info">
+            {{#each contactInfo}}
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="{{this.icon}}"></i>
+                </div>
+                <div class="info-content">
+                    <h4>{{this.title}}</h4>
+                    <p>{{this.content}}</p>
+                    {{#if this.link}}
+                    <a href="{{this.link}}" class="info-link">{{this.linkText}}</a>
+                    {{/if}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        
+        <div class="business-hours mt-4">
+            <h4><i class="fas fa-clock"></i> Horarios de Atención</h4>
+            <div class="hours-list">
+                {{#each businessHours}}
+                <div class="hours-item">
+                    <span class="day">{{this.day}}</span>
+                    <span class="time">{{this.hours}}</span>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        
+        <div class="social-contact mt-4">
+            <h4><i class="fas fa-share-alt"></i> Síguenos en Redes Sociales</h4>
+            <div class="social-links">
+                {{#each socialLinks}}
+                <a href="{{this.url}}" class="social-link" target="_blank" rel="noopener">
+                    <i class="{{this.icon}}"></i>
+                    <span>{{this.name}}</span>
+                </a>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#if officeLocations}}
+<div class="card mb-4">
+    <h3 class="text-center mb-3"><i class="fas fa-map-marker-alt"></i> Nuestras Oficinas</h3>
+    <div class="grid grid-2">
+        {{#each officeLocations}}
+        <div class="office-card">
+            <h4>{{this.name}}</h4>
+            <div class="office-info">
+                <p><i class="fas fa-map-marker-alt"></i> {{this.address}}</p>
+                <p><i class="fas fa-phone"></i> {{this.phone}}</p>
+                <p><i class="fas fa-envelope"></i> {{this.email}}</p>
+            </div>
+            {{#if this.mapUrl}}
+            <a href="{{this.mapUrl}}" target="_blank" class="btn btn-secondary mt-2">
+                <i class="fas fa-map"></i> Ver en Mapa
+            </a>
+            {{/if}}
+        </div>
+        {{/each}}
+    </div>
+</div>
+{{/if}}
+
+<div class="card text-center">
+    <h3><i class="fas fa-question-circle"></i> Preguntas Frecuentes</h3>
+    <p class="mb-3">¿Tienes dudas? Revisa nuestras preguntas más comunes</p>
+    
+    <div class="faq-list">
+        {{#each faq}}
+        <div class="faq-item">
+            <div class="faq-question" data-faq="{{@index}}">
+                <h4>{{this.question}}</h4>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer" id="faq-{{@index}}">
+                <p>{{this.answer}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<style>
+.contact-form {
+    max-width: 100%;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-right: 0.5rem;
+    margin-top: 0.2rem;
+}
+
+.privacy-link {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.privacy-link:hover {
+    text-decoration: underline;
+}
+
+.btn-submit {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 1rem;
+}
+
+.btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.error-message {
+    color: #e53e3e;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+.success-message {
+    text-align: center;
+    padding: 2rem;
+    color: #38a169;
+}
+
+.success-message i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info {
+    margin-bottom: 1.5rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.info-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.info-content h4 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.info-content p {
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.info-link {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.info-link:hover {
+    text-decoration: underline;
+}
+
+.business-hours {
+    background: rgba(102, 126, 234, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.hours-list {
+    margin-top: 1rem;
+}
+
+.hours-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.hours-item:last-child {
+    border-bottom: none;
+}
+
+.day {
+    font-weight: 500;
+    color: #333;
+}
+
+.time {
+    color: #666;
+}
+
+.social-contact .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.social-contact .social-link {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.social-contact .social-link:hover {
+    background: rgba(102, 126, 234, 0.2);
+    transform: translateX(5px);
+}
+
+.social-contact .social-link i {
+    margin-right: 0.8rem;
+    width: 20px;
+    color: #667eea;
+}
+
+.office-card {
+    padding: 1.5rem;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.office-card h4 {
+    color: #667eea;
+    margin-bottom: 1rem;
+}
+
+.office-info p {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.office-info i {
+    margin-right: 0.5rem;
+    width: 16px;
+    color: #667eea;
+}
+
+.faq-list {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 1.5rem;
+    background: rgba(102, 126, 234, 0.1);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    background: rgba(102, 126, 234, 0.15);
+}
+
+.faq-question h4 {
+    color: #333;
+    margin: 0;
+}
+
+.faq-question i {
+    color: #667eea;
+    transition: transform 0.3s ease;
+}
+
+.faq-question.active i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.faq-answer.show {
+    padding: 1.5rem;
+    max-height: 200px;
+}
+
+.faq-answer p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .social-contact .social-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .social-contact .social-link {
+        flex: 1;
+        min-width: 120px;
+        justify-content: center;
+    }
+    
+    .info-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .info-icon {
+        margin: 0 auto 1rem auto;
+    }
+}
+</style>

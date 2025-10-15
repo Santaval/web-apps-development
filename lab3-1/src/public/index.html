@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<title>Sistema de ventas</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.css"/>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<link rel="stylesheet" href="/css/estilo.css"/> <!-- enlazar css -->
+		<script src="/js/funciones.js"></script> <!-- importar js general -->
+		<meta name="viewport" content="width=device-width, initial-scale=1"/> <!-- para escala responsive -->
+	</head>
+	<body>
+		<div class="principal">
+			<div class="encabezado">
+				<div><img src="/favicon.ico" alt="logo"/></div>
+				<h1 class="d-inline">Venta de ...</h1>
+			</div>
+			
+			<div class="lateral d-inline">
+				<ul class="menu">
+					<li class="navegar">
+						<a href="/inicio.html">Inicio</a>
+					</li>
+					<li>
+						<a>Configuración</a>
+						<ul class="submenu">
+							<li class="navegar">
+								<a href="/configuracion/categorias/">Categorías</a>
+							</li>
+							<li class="navegar">
+								<a href="/configuracion/productos/">Productos</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a>Transacciones</a>
+						<ul class="submenu">
+							<li class="navegar">
+								<a href="/transacciones/ventas/">Ventas</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a>Reportes</a>
+						<ul class="submenu">
+							<li class="navegar">
+								<a href="/reportes/ventas.html">Ventas</a>
+							</li>
+							<li class="navegar">
+								<a href="/reportes/inventarios.html">Inventarios</a>
+							</li>
+						</ul>
+					</li>
+                    <li class="navegar">
+                        <a href="/contact.html">Contacto</a>
+                    </li>
+                    
+				</ul> <!-- .menu -->
+			</div> <!-- .lateral -->
+			
+			<div class="contenido d-inline">
+				<div id="container">
+					<div id="header">
+						<h1>Mi Aplicación</h1>
+					</div>
+					<div id="menu">
+						<ul>
+							<li><a href="inicio.html" target="content">Inicio</a></li>
+							<li><a href="transacciones/ventas/" target="content">Ventas</a></li>
+							<li><a href="reportes/ventas.html" target="content">Reporte de Ventas</a></li>
+							<li><a href="contact.html" target="content">Contacto</a></li>
+						</ul>
+					</div>
+					<div id="content">
+						<iframe name="content" src="inicio.html" frameborder="0" width="100%" height="100%"></iframe>
+					</div>
+					<div id="footer">
+						<p>&copy; 2024 Mi Aplicación - Todos los derechos reservados</p>
+					</div>
+				</div>
+			
+				<!-- ESPACIO RESERVADO PARA EL CONTENIDO DE LAS DEMÁS PÁGINAS -->
+			
+			</div>
+			<!--div class="scrollhide d-inline"></div-->
+			
+		</div> <!-- .principal -->
+		
+		<script>main();</script>
+		
+	</body>
+</html>

@@ -1,0 +1,284 @@
+<div class="page-header">
+    <h1 class="page-title">
+        <i class="fas fa-cogs"></i> Nuestros Servicios
+    </h1>
+    <p class="page-subtitle">
+        Soluciones tecnológicas innovadoras para tu negocio
+    </p>
+</div>
+
+<div class="services-filter mb-4">
+    <div class="filter-buttons text-center">
+        <button class="btn filter-btn active" data-filter="all">Todos</button>
+        <button class="btn btn-secondary filter-btn" data-filter="web">Desarrollo Web</button>
+        <button class="btn btn-secondary filter-btn" data-filter="mobile">Móvil</button>
+        <button class="btn btn-secondary filter-btn" data-filter="consulting">Consultoría</button>
+    </div>
+</div>
+
+<div class="services-grid">
+    {{#each services}}
+    <div class="service-card card" data-category="{{this.category}}">
+        <div class="service-icon">
+            <i class="{{this.icon}} card-icon"></i>
+        </div>
+        <h3 class="service-title">{{this.title}}</h3>
+        <p class="service-description">{{this.description}}</p>
+        
+        {{#if this.features}}
+        <div class="service-features">
+            <h4>Características:</h4>
+            <ul>
+                {{#each this.features}}
+                <li><i class="fas fa-check"></i> {{this}}</li>
+                {{/each}}
+            </ul>
+        </div>
+        {{/if}}
+        
+        <div class="service-price">
+            {{#if this.price}}
+                <span class="price-label">Desde</span>
+                <span class="price-amount">{{currency this.price}}</span>
+            {{else}}
+                <span class="price-label">Precio</span>
+                <span class="price-amount">Consultar</span>
+            {{/if}}
+        </div>
+        
+        <div class="service-actions">
+            <button class="btn service-details-btn" data-service="{{this.id}}">
+                Ver Detalles
+            </button>
+            <button class="btn btn-secondary contact-btn">
+                Contactar
+            </button>
+        </div>
+        
+        {{#if this.popular}}
+        <div class="popular-badge">
+            <i class="fas fa-star"></i> Popular
+        </div>
+        {{/if}}
+    </div>
+</div>
+
+
+<div class="cta-section card text-center mt-4">
+    <h3>¿Necesitas un servicio personalizado?</h3>
+    <p>Contáctanos para una consulta gratuita y descubre cómo podemos ayudarte</p>
+    <a href="#contact" class="btn" data-page="contact">
+        <i class="fas fa-envelope"></i> Contactar Ahora
+    </a>
+</div>
+
+<!-- Service Details Modal Template -->
+<div id="serviceModal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="serviceModalTitle">Detalles del Servicio</h3>
+            <button class="close-modal" id="closeServiceModal">&times;</button>
+        </div>
+        <div class="modal-body" id="serviceModalBody">
+            <!-- Service details will be loaded here -->
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" id="requestQuoteBtn">Solicitar Cotización</button>
+            <button class="btn btn-secondary" id="closeServiceModalBtn">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+<style>
+.services-filter {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.service-title {
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.service-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.service-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.service-features li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.service-features i {
+    color: #667eea;
+    margin-right: 0.5rem;
+}
+
+.service-price {
+    text-align: center;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 8px;
+}
+
+.price-label {
+    display: block;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.price-amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.service-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.service-actions .btn {
+    flex: 1;
+    text-align: center;
+}
+
+.popular-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(45deg, #f093fb, #f5576c);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.testimonial-card {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+}
+
+.testimonial-content {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+.testimonial-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.author-info h4 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.author-info p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.testimonial-rating {
+    color: #fbbf24;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.cta-section .btn {
+    background: white;
+    color: #667eea;
+}
+
+.cta-section .btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+}
+
+.service-card.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .filter-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .service-actions {
+        flex-direction: column;
+    }
+    
+    .testimonial-author {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+}
+</style>

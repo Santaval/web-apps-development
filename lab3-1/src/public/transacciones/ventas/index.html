@@ -1,0 +1,44 @@
+<h4>Detalle de Venta</h4>				
+				
+<div class="centrado">
+	<div class="editardiv">
+		<form class="editarform" action="/api/transacciones/registrarventa" method="post" enctype="multipart/form-data">
+		
+			<div class="d-inline">
+				Producto:<br/> <input type="text" id="producto" placeholder="Digite y elija un producto"/>
+				<br/>
+				<ul id="productoscompletar"></ul>
+				
+				Cantidad:<br/> <input type="number" id="cantidad" value="1" min="1" placeholder="Digite una cantidad" onkeypress="return validarCantidad(event)"/>  <br/>
+				
+				<br/> <button type="button" id="agregar"> <span class="fa fa-plus icono"/></span> Agregar </button>  <br/><br/>
+			</div>
+			
+			<div class="d-inline venta">
+				Venta:<hr/> <ul id="venta_ul"></ul>
+				<hr/>
+				Total: <label id="total">c.0</label>  <br/><br/>
+			</div>
+			
+			<input type="hidden" id="listaventa" name="listaventa" />
+			<hr/>
+			
+			<div class="derecha">
+				<button type="submit">
+					<span class="fa fa-save icono"/></span> Registrar
+				</button>
+			<button type="button" id="imprimir" onclick="printHtml( document.getElementsByClassName('venta')[0].innerHTML, 400, 600 , document.title, '/css/estilo.css'); "> <span class="fa fa-print icono"/></span> Imprimir </button>
+			</div>
+			
+		</form>
+	</div>
+	<br/><br/>
+</div>
+
+<script src="/js/clienteTransacciones.js"></script>
+
+<script>
+	setTimeout(function(){
+		Inicializar();
+	}, 500);
+</script>
