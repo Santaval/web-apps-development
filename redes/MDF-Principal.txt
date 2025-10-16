@@ -1,0 +1,185 @@
+interface GigabitEthernet1/0/3
+ switchport access vlan 200
+ switchport mode access
+!
+interface GigabitEthernet1/0/4
+!
+interface GigabitEthernet1/0/5
+!
+interface GigabitEthernet1/0/6
+ switchport access vlan 200
+!
+interface GigabitEthernet1/0/7
+!
+interface GigabitEthernet1/0/8
+!
+interface GigabitEthernet1/0/9
+!
+interface GigabitEthernet1/0/10
+!
+interface GigabitEthernet1/0/11
+!
+interface GigabitEthernet1/0/12
+!
+interface GigabitEthernet1/0/13
+!
+interface GigabitEthernet1/0/14
+!
+interface GigabitEthernet1/0/15
+!
+interface GigabitEthernet1/0/16
+!
+interface GigabitEthernet1/0/17
+!
+interface GigabitEthernet1/0/18
+!
+interface GigabitEthernet1/0/19
+!
+interface GigabitEthernet1/0/20
+!
+interface GigabitEthernet1/0/21
+!
+interface GigabitEthernet1/0/22
+!
+interface GigabitEthernet1/0/23
+!
+interface GigabitEthernet1/0/24
+ no switchport
+ ip address 192.168.100.2 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet1/1/1
+ switchport trunk allowed vlan 99,200-201
+ switchport mode trunk
+!
+interface GigabitEthernet1/1/2
+!
+interface GigabitEthernet1/1/3
+!
+interface GigabitEthernet1/1/4
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan99
+ mac-address 0002.17c4.b001
+ ip address 10.99.99.1 255.255.255.252
+!
+interface Vlan101
+ mac-address 0002.17c4.b002
+ ip address 10.1.101.1 255.255.255.0
+ ip helper-address 10.2.200.10
+ ip access-group VLAN101_ACL in
+!
+interface Vlan102
+ mac-address 0002.17c4.b003
+ ip address 10.1.102.1 255.255.255.0
+ ip helper-address 10.1.200.10
+ ip helper-address 10.2.200.10
+ ip access-group VLAN102_ACL in
+!
+interface Vlan103
+ mac-address 0002.17c4.b004
+ ip address 10.1.103.1 255.255.255.0
+ ip helper-address 10.2.200.10
+ ip access-group VLAN103_ACL in
+!
+interface Vlan104
+ mac-address 0002.17c4.b005
+ ip address 10.1.104.1 255.255.255.0
+ ip helper-address 10.2.200.10
+ ip access-group VLAN104_ACL in
+!
+interface Vlan120
+ mac-address 0002.17c4.b006
+ no ip address
+!
+interface Vlan200
+ mac-address 0002.17c4.b007
+ ip address 10.2.200.1 255.255.255.0
+ ip helper-address 10.2.200.10
+!
+interface Vlan201
+ mac-address 0002.17c4.b008
+ ip address 10.1.201.1 255.255.255.0
+ ip helper-address 10.2.200.10
+ ip access-group VLAN201_ACL in
+!
+router rip
+!
+ip classless
+ip route 10.1.103.0 255.255.255.0 10.99.99.2 
+ip route 10.1.104.0 255.255.255.0 10.99.99.2 
+ip route 0.0.0.0 0.0.0.0 192.168.100.1 
+!
+ip flow-export version 9
+!
+!
+ip access-list extended VLAN103_FILTER
+ permit ip 10.1.103.0 0.0.0.255 10.2.200.0 0.0.0.255
+ deny ip 10.1.103.0 0.0.0.255 10.1.101.0 0.0.0.255
+ deny ip 10.1.103.0 0.0.0.255 10.1.102.0 0.0.0.255
+ permit ip 10.1.103.0 0.0.0.255 any
+ip access-list extended VLAN101_ACL
+ permit udp any eq bootpc any eq bootps
+ permit udp any eq bootps any eq bootpc
+ permit ip any 10.2.200.0 0.0.0.255
+ deny ip any 10.1.102.0 0.0.0.255
+ deny ip any 10.1.103.0 0.0.0.255
+ deny ip any 10.1.104.0 0.0.0.255
+ deny ip any 10.1.201.0 0.0.0.255
+ permit ip any any
+ip access-list extended VLAN102_ACL
+ permit udp any eq bootpc any eq bootps
+ permit udp any eq bootps any eq bootpc
+ permit ip any 10.2.200.0 0.0.0.255
+ deny ip any 10.1.101.0 0.0.0.255
+ deny ip any 10.1.103.0 0.0.0.255
+ deny ip any 10.1.104.0 0.0.0.255
+ deny ip any 10.1.201.0 0.0.0.255
+ permit ip any any
+ip access-list extended VLAN103_ACL
+ permit udp any eq bootpc any eq bootps
+ permit udp any eq bootps any eq bootpc
+ permit ip any 10.2.200.0 0.0.0.255
+ deny ip any 10.1.101.0 0.0.0.255
+ deny ip any 10.1.102.0 0.0.0.255
+ deny ip any 10.1.104.0 0.0.0.255
+ deny ip any 10.1.201.0 0.0.0.255
+ permit ip any any
+ip access-list extended VLAN104_ACL
+ permit udp any eq bootpc any eq bootps
+ permit udp any eq bootps any eq bootpc
+ permit ip any 10.2.200.0 0.0.0.255
+ deny ip any 10.1.101.0 0.0.0.255
+ deny ip any 10.1.102.0 0.0.0.255
+ deny ip any 10.1.103.0 0.0.0.255
+ deny ip any 10.1.201.0 0.0.0.255
+ permit ip any any
+ip access-list extended VLAN201_ACL
+ permit udp any eq bootpc any eq bootps
+ permit udp any eq bootps any eq bootpc
+ permit ip any 10.2.200.0 0.0.0.255
+ deny ip any 10.1.101.0 0.0.0.255
+ deny ip any 10.1.102.0 0.0.0.255
+ deny ip any 10.1.103.0 0.0.0.255
+ deny ip any 10.1.104.0 0.0.0.255
+ permit ip any any
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+!
+end

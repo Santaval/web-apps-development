@@ -1,0 +1,188 @@
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet1/0/1
+ switchport trunk allowed vlan 103,201
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/2
+ switchport trunk allowed vlan 104,201
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/3
+!
+interface GigabitEthernet1/0/4
+!
+interface GigabitEthernet1/0/5
+!
+interface GigabitEthernet1/0/6
+!
+interface GigabitEthernet1/0/7
+!
+interface GigabitEthernet1/0/8
+!
+interface GigabitEthernet1/0/9
+!
+interface GigabitEthernet1/0/10
+!
+interface GigabitEthernet1/0/11
+!
+interface GigabitEthernet1/0/12
+!
+interface GigabitEthernet1/0/13
+!
+interface GigabitEthernet1/0/14
+!
+interface GigabitEthernet1/0/15
+!
+interface GigabitEthernet1/0/16
+!
+interface GigabitEthernet1/0/17
+!
+interface GigabitEthernet1/0/18
+!
+interface GigabitEthernet1/0/19
+!
+interface GigabitEthernet1/0/20
+!
+interface GigabitEthernet1/0/21
+!
+interface GigabitEthernet1/0/22
+!
+interface GigabitEthernet1/0/23
+!
+interface GigabitEthernet1/0/24
+!
+interface GigabitEthernet1/1/1
+ description Link-to-Anexo
+ switchport trunk allowed vlan 99,201
+ switchport mode trunk
+!
+interface GigabitEthernet1/1/2
+!
+interface GigabitEthernet1/1/3
+!
+interface GigabitEthernet1/1/4
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan99
+ mac-address 00d0.d333.a201
+ ip address 10.99.99.2 255.255.255.252
+!
+interface Vlan101
+ mac-address 00d0.d333.a202
+ ip address 10.1.101.1 255.255.255.0
+ ip helper-address 10.2.200.10
+ ip access-group VLAN101_ACL in
+!
+interface Vlan102
+ mac-address 00d0.d333.a203
+ ip address 10.1.102.1 255.255.255.0
+ ip helper-address 10.2.200.10
+ ip access-group VLAN102_ACL in
+!
+interface Vlan103
+ mac-address 00d0.d333.a204
+ ip address 10.1.103.1 255.255.255.0
+ ip helper-address 10.2.200.10
+ ip access-group VLAN103_ACL in
+!
+interface Vlan104
+ mac-address 00d0.d333.a205
+ ip address 10.1.104.1 255.255.255.0
+ ip helper-address 10.2.200.10
+ ip access-group VLAN104_ACL in
+!
+interface Vlan201
+ mac-address 00d0.d333.a206
+ ip address 10.1.201.1 255.255.255.0
+ ip helper-address 10.2.200.10
+ ip access-group VLAN201_ACL in
+!
+ip classless
+ip route 10.2.200.0 255.255.255.0 10.1.99.1 
+ip route 10.2.200.0 255.255.255.0 10.99.99.1 
+!
+ip flow-export version 9
+!
+!
+ip access-list extended VLAN101_ACL
+ permit udp any eq bootpc any eq bootps
+ permit udp any eq bootps any eq bootpc
+ permit udp any any eq domain
+ permit tcp any any eq domain
+ permit icmp any any
+ permit ip 10.1.0.0 0.0.255.255 10.2.200.0 0.0.0.255
+ permit ip 10.2.200.0 0.0.0.255 10.1.0.0 0.0.255.255
+ deny ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ permit ip any any
+ip access-list extended VLAN102_ACL
+ permit udp any eq bootpc any eq bootps
+ permit udp any eq bootps any eq bootpc
+ permit udp any any eq domain
+ permit tcp any any eq domain
+ permit icmp any any
+ permit ip 10.1.0.0 0.0.255.255 10.2.200.0 0.0.0.255
+ permit ip 10.2.200.0 0.0.0.255 10.1.0.0 0.0.255.255
+ deny ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ permit ip any any
+ip access-list extended VLAN103_ACL
+ permit udp any eq bootpc any eq bootps
+ permit udp any eq bootps any eq bootpc
+ permit udp any any eq domain
+ permit tcp any any eq domain
+ permit icmp any any
+ permit ip 10.1.0.0 0.0.255.255 10.2.200.0 0.0.0.255
+ permit ip 10.2.200.0 0.0.0.255 10.1.0.0 0.0.255.255
+ deny ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ permit ip any any
+ip access-list extended VLAN104_ACL
+ permit udp any eq bootpc any eq bootps
+ permit udp any eq bootps any eq bootpc
+ permit udp any any eq domain
+ permit tcp any any eq domain
+ permit icmp any any
+ permit ip 10.1.0.0 0.0.255.255 10.2.200.0 0.0.0.255
+ permit ip 10.2.200.0 0.0.0.255 10.1.0.0 0.0.255.255
+ deny ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ permit ip any any
+ip access-list extended VLAN201_ACL
+ permit udp any eq bootpc any eq bootps
+ permit udp any eq bootps any eq bootpc
+ permit udp any any eq domain
+ permit tcp any any eq domain
+ permit icmp any any
+ permit ip 10.1.0.0 0.0.255.255 10.2.200.0 0.0.0.255
+ permit ip 10.2.200.0 0.0.0.255 10.1.0.0 0.0.255.255
+ deny ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ permit ip any any
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+!
+end
