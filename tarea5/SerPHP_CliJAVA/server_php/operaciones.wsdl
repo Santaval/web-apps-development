@@ -1,0 +1,69 @@
+<definitions
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://localhost/soap"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://localhost/soap"
+    name="SumaService">
+
+    <!-- Types -->
+    <types>
+        <xsd:schema targetNamespace="http://localhost/soap">
+            <xsd:element name="factores">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="lista" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+                        <xsd:element name="numero" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="factoresResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="result" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+
+    <!-- Messages -->
+    <message name="factoresRequest">
+        <part name="parameters" element="tns:factores"/>
+    </message>
+
+    <message name="factoresResponse">
+        <part name="parameters" element="tns:factoresResponse"/>
+    </message>
+
+    <!-- Port Type -->
+    <portType name="FactoresPortType">
+        <operation name="factores">
+            <input message="tns:factoresRequest"/>
+            <output message="tns:factoresResponse"/>
+        </operation>
+    </portType>
+
+    <!-- Binding -->
+    <binding name="FactoresBinding" type="tns:FactoresPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="factores">
+            <soap:operation soapAction="http://localhost/soap/factores"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <!-- Service -->
+    <service name="FactoresService">
+        <port name="FactoresPort" binding="tns:FactoresBinding">
+            <soap:address location="http://localhost/server.php"/>
+        </port>
+    </service>
+
+</definitions>
